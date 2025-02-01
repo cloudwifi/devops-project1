@@ -4,7 +4,11 @@ cd /home/ubuntu || exit
 
 # Update package list and install required dependencies
 sudo apt update -y
-sudo apt install -y python3 python3-pip git
+sudo apt install -y python3 python3-pip git apache2
+
+# Enable and start Apache
+sudo systemctl enable apache2
+sudo systemctl start apache2
 
 # Clone the Git repository
 git clone https://github.com/cloudwifi/python-mysql-db-project-1.git
