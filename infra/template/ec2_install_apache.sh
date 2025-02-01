@@ -1,13 +1,23 @@
-#! /bin/bash
-# shellcheck disable=SC2164
-cd /home/ubuntu
-yes | sudo apt update
-yes | sudo apt install python3 python3-pip
-git clone https://github.com/rahulwagh/python-mysql-db-proj-1.git
+#!/bin/bash
+# Navigate to home directory
+cd /home/ubuntu || exit
+
+# Update package list and install required dependencies
+sudo apt update -y
+sudo apt install -y python3 python3-pip git
+
+# Clone the Git repository
+git clone https://github.com/cloudwifi/python-mysql-db-project-1.git
 sleep 20
-# shellcheck disable=SC2164
-cd python-mysql-db-proj-1
+
+# Navigate to the project directory
+cd python-mysql-db-project-1 || { echo "Directory not found! Exiting..."; exit 1; }
+
+# Install Python dependencies
 pip3 install -r requirements.txt
-echo 'Waiting for 30 seconds before running the app.py'
-setsid python3 -u app.py &
+
+echo "Waiting for 30 seconds before running app.py..."
 sleep 30
+
+# Start the application in the background and log output
+setsid python3 -u app.py > app.log 2>&1 &
