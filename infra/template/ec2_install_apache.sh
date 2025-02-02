@@ -1,6 +1,6 @@
 #!/bin/bash
 # Navigate to home directory
-cd /home/ubuntu || exit
+cd /home/ubuntu 
 
 # Update package list and install required dependencies
 sudo apt update -y
